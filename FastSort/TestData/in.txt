@@ -1,0 +1,68 @@
+Управление не может "проваливаться" из одной метки инструкции case ('label') в другую
+Если оператор switch содержит более чем один раздел ключа, необходимо явно выполнить каждый раздел, включая последний один, с помощью одного из следующих ключевых слов:
+return
+goto
+break
+throw
+continue
+Если необходимо реализовать "," упадите через расширение функциональности из одного раздела к следующему, используйте переход case #. Дополнительные сведения и примеры см. в разделе switch (Справочник по C#).
+Следующий пример кода приводит к возникновению ошибки CS0163.
+C#
+// CS0163.cs
+public class MyClass
+{
+    public static void Main()
+    {
+        int i = 0;
+
+        switch (i)   // CS0163
+        {
+            // Compiler error CS0163 is reported on the following line.
+            case 1:
+                i++;
+            // To resolve the error, uncomment one of the following example statements.
+            // return;
+            // break;
+            // goto case 3;
+
+            case 2:
+                i++;
+                return;
+
+            case 3:
+                i = 0;
+                return;
+
+            // Compiler error CS0163 is reported on the following line.
+            default:
+                Console.WriteLine("Default");
+                // To resolve the error, uncomment the following line:
+            //break;
+        }
+    }
+Добавления сообщества
+ДОБАВИТЬ
+Центры разработки
+Windows
+Windows Phone
+Office
+Windows Azure
+Visual Studio
+Дополнительные материалы…
+Учебные материалы
+Microsoft Virtual Academy
+Channel 9
+TechDays
+MSDN Magazine
+Сообщество
+Форумы
+Блоги
+Codeplex
+Поддержка
+Самостоятельная поддержка
+Другие варианты поддержки
+Программы
+BizSpark (для стартапов)
+DreamSpark
+Faculty Connection
+Microsoft Student 
