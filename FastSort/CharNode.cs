@@ -8,7 +8,7 @@ namespace FastSort
 {
     class CharNode
     {
-        private SortedDictionary<char, CharNode> _children = new SortedDictionary<char, CharNode>(new Comparer<char>());
+        private SortedDictionary<char, CharNode> _children = new SortedDictionary<char, CharNode>();
 
         private bool _isFullWord = false;
 

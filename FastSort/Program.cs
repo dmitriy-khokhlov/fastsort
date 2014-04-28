@@ -10,9 +10,6 @@ namespace FastSort
     {
         static void Main(string[] args)
         {
-            Console.WriteLine('о' > 'м');
-            return;
-
             CharNode rootNode = new CharNode();
             CharNode currentNode = rootNode;
             int receivedCharCode;
