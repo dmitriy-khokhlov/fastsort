@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FastSort
 {
@@ -10,10 +8,14 @@ namespace FastSort
     {
         static void Main(string[] args)
         {
+
             CharNode rootNode = new CharNode();
             CharNode currentNode = rootNode;
             int receivedCharCode;
             bool isWordStarted = false;
+
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
 
             while ( (receivedCharCode = Console.Read()) != -1)
             {
@@ -43,7 +45,7 @@ namespace FastSort
             {
                 currentNode.MarkAsFullWord();
             }
-            
+
             List<string> sortedWordList = new List<string>();
             rootNode.FillSortedWordsList("", sortedWordList);
 

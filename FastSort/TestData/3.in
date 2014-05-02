@@ -1,0 +1,136 @@
+Developer Network
+MSDN subscriptions  Get tools  Sign in
+
+Home  Technologies
+ Dev centers  Connect
+ Downloads
+ Library  Samples
+Follow ushttp://www.facebook.com/microsoftdeveloper https://twitter.com/msdev http://plus.google.com/111221966647232053570/
+Export (0) Print Collapse All
+MSDN Library
+.NET Development
+.NET Framework 4.5
+.NET Framework Class Library
+System.Text Namespaces
+System.Text
+Encoding Class
+Encoding Methods
+GetEncoding Method
+GetEncoding Method (Int32)
+GetEncoding Method (String)
+GetEncoding Method (Int32, EncoderFallback, DecoderFallback)
+GetEncoding Method (String, EncoderFallback, DecoderFallback)
+Expand
+Encoding.GetEncoding Method (String)
+
+.NET Framework 4.5 Other Versions 1 out of 2 rated this helpful - Rate this topic
+Returns the encoding associated with the specified code page name.
+Namespace:  System.Text
+Assembly:  mscorlib (in mscorlib.dll)
+Syntax
+C#C++F#VB
+public static Encoding GetEncoding(
+	string name
+)
+Parameters
+name
+Type: System.String
+The code page name of the preferred encoding. Any value returned by the WebName property is valid. Possible values are listed in the Name column of the table that appears in the Encoding class topic.
+Return Value
+Type: System.Text.Encoding
+The encoding associated with the specified code page.
+Exceptions
+Exception	Condition
+ArgumentException	
+name is not a valid code page name.
+-or-
+The code page indicated by name is not supported by the underlying platform.
+Remarks
+The fallback handler depends on the encoding type of name. If name is a code page or double-byte character set (DBCS) encoding, a best-fit fallback handler is used. Otherwise, a replacement fallback handler is used. These fallback handlers may not be appropriate for your application. To specify the fallback handler used by the encoding specified by name, you can call the GetEncoding(String, EncoderFallback, DecoderFallback) overload.
+The GetEncoding method relies on the underlying platform to support most code pages. However, the .NET Framework natively supports some encodings.
+NoteNote
+The ANSI code pages can be different on different computers, or can be changed for a single computer, leading to data corruption. For the most consistent results, applications should use Unicode, such as UTF-8 (code page 65001) or UTF-16, instead of a specific code page.
+For a list of code pages, see the Encoding class topic. The application uses the GetEncodings method to get a list of all encodings.
+GetEncoding returns a cached instance with default settings. The application should use the constructors of derived classes to get an instance with different settings. For example, the UTF32Encoding class provides a constructor that lets you enable error detection.
+Examples
+The following example gets two instances of the same encoding (one by code page and another by name), and checks their equality.
+C#C++VB
+using System;
+using System.Text;
+
+public class SamplesEncoding  {
+
+   public static void Main()  {
+
+      // Get a UTF-32 encoding by codepage.
+      Encoding e1 = Encoding.GetEncoding( 12000 );
+
+      // Get a UTF-32 encoding by name.
+      Encoding e2 = Encoding.GetEncoding( "utf-32" );
+
+      // Check their equality.
+      Console.WriteLine( "e1 equals e2? {0}", e1.Equals( e2 ) );
+
+   }
+
+}
+
+
+/* 
+This code produces the following output.
+
+e1 equals e2? True
+
+*/
+Version Information
+.NET Framework
+Supported in: 4.5.1, 4.5, 4, 3.5, 3.0, 2.0, 1.1, 1.0
+.NET Framework Client Profile
+Supported in: 4, 3.5 SP1
+Portable Class Library
+Supported in: Portable Class Library
+.NET for Windows Store apps
+Supported in: Windows 8
+.NET for Windows Phone apps
+Supported in: Windows Phone 8.1, Windows Phone 8, Silverlight 8.1
+Platforms
+Windows Phone 8.1, Windows Phone 8, Windows 8.1, Windows Server 2012 R2, Windows 8, Windows Server 2012, Windows 7, Windows Vista SP2, Windows Server 2008 (Server Core Role not supported), Windows Server 2008 R2 (Server Core Role supported with SP1 or later; Itanium not supported)
+The .NET Framework does not support all versions of every platform. For a list of the supported versions, see .NET Framework System Requirements.
+See Also
+Reference
+Encoding Class
+GetEncoding Overload
+System.Text Namespace
+EncoderFallback
+System.Text.EncoderFallback
+GetEncodings
+Other Resources
+Character Encoding in the .NET Framework
+Dev centers
+Windows
+Windows Phone
+Office
+Visual Studio
+Nokia
+Microsoft Azure
+More...
+Learning resources
+Microsoft Virtual Academy
+Channel 9
+Interoperability Bridges
+MSDN Magazine
+Community
+Forums
+Blogs
+Codeplex
+Support
+Self support
+Other support options
+Programs
+BizSpark (for startups)
+DreamSpark
+Faculty Connection
+Microsoft Student
+Did you find this helpful?  Yes  No
+United States (English)
+Newsletter Privacy & cookies Terms of use Trademarks © 2014 Microsoft
